@@ -4,11 +4,12 @@
 # "category" - the category the video belongs to (action, comedy, drama etc), a variable length string with a maximum length of 255 characters.
 # "length" - the length of the movie in minutes, recorded as a positive integer.
 # "rented" - a required boolean value indicating whether the video is checkedin in. When added it should default to checked in.
+DROP TABLE IF EXISTS rstvideo;
 
 CREATE TABLE rstvideo(
 id int primary key auto_increment,
 name varchar(255) UNIQUE NOT NULL,
 category varchar(255) DEFAULT 'Uncategorized',
-length int unsigned,
+length int unsigned DEFAULT 0,
 rented boolean NOT NULL DEFAULT 0)
 engine=innodb;

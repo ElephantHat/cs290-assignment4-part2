@@ -1,3 +1,7 @@
 Start: Mon, 09 Feb 2015 1555 -0800
-End: Mon, 09 Feb 2015 ---- -0800
-Tasks: Created & cloned repo. Created database table. Wrote code required by assignment. Looked up documentation when encountering difficulties. Did some cursory testing. Took a ~2hr dinner break at one point. Got distracted by email, gchat, & irc more than once.
+End: Mon, 09 Feb 2015 1700 -0800
+Tasks: Created & cloned repo. Created database table creation query. Looked up SQL syntax and options for various requirements of assignment (not null, unsigned integer, etc). Built skeleton of web page.
+
+Start: Tue, 10 Feb 2015 1745 -0800
+End: Tue, 10 Feb 2015 1930 -0800
+Tasks: Added basic database interaction, ability to add movies.
