@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['request']=='add'){
 		$errors['validate']['err'] = true;
 		$errors['validate']['msg'].= "Name cannot be blank.<br>";
 	}
+
+// Commented out to comply with assignment testing description	
 //	if($_POST['length'] == ''){
 //		$errors['validate']['err'] = true;
 //		$errors['validate']['msg'].= "Length cannot be blank.<br>";
@@ -49,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['request']=='add'){
 	if($errors['validate']['err'])
 		$errors['validate']['msg'].="Video not added. Please try again.<br>";
 
-	if($_POST['category'] == '')
+// Commented out to comply with assignment testing description	
+//	if($_POST['category'] == '')
 //		$_POST['category'] = 'Uncategorized';
 	if (!$errors['validate']['err'])
 		addMovie();
@@ -163,7 +166,7 @@ function popTable(){
 
 	//prep & execute query
 	$query = "SELECT id, name, category, length, rented FROM rstvideo";
-	$query.= (isset($_POST['request']) && $_POST['request'] == "filter" && $_POST['category'] != "allMovies")  ? " WHERE category='".$_POST['category']."'" : ""; 
+	$query.= (isset($_POST['request']) && $_POST['request'] == "filter" && $_POST['category'] != "allMovies")  ? " WHERE category='".$_POST['category']."' ORDER BY name" : " ORDER BY name"; 
 	if(!($stmt=$mysqli->prepare($query))){
 		$errors['poptable']['err']=true; $errors['poptable']['msg'].=
 			"MYSQL query prepare failed.<br>";
@@ -185,7 +188,7 @@ function popTable(){
 
 	if ($stmt->num_rows < 1) $retval= ($errors['poptable']['err']) ? 
 		"<td><tr>".$errors['poptable']['msg']."Couldn't retrieve video inventory.</td></tr>" 
-		: "<tr><td>No videos! Add some to the inventory, ya dingus!</td></tr>";
+		: "<tr><td>No videos! Add some to the inventory, ya dingus!</td><td>--</td><td>--</td></tr>";
 
 	$stmt->close();	
 	return $retval;
@@ -216,7 +219,6 @@ function addMovie(){
 
 $table = popTable();
 $categories = popCat();
-$errval= json_encode($errors);
 ?>
 
 <!DOCTYPE html>
@@ -268,10 +270,8 @@ else
 
 
 	<table id="movielist">
-	<tr><td>Movie Name</td><td>Category</td><td>Length</td></tr>
+	<tr class="darkgrey" ><td>Movie Name</td><td>Category</td><td>Length</td></tr>
 		<?php echo $table; ?> 
 	</table>
-
-	<script> console.log(<?php echo $errval; ?>);</script>
 </body>
 </html>
