@@ -5,3 +5,7 @@ Tasks: Created & cloned repo. Created database table creation query. Looked up S
 Start: Tue, 10 Feb 2015 1745 -0800
 End: Tue, 10 Feb 2015 1930 -0800
 Tasks: Added basic database interaction, ability to add movies.
+
+Start: Sun, 15 Feb 2015 2000 -0800
+End: Mon, 16 Feb 2015 0000 -0800
+Tasks: Finished rest of assignment.
